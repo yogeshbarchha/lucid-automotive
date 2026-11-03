@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucid Automotive Detailing | Premium Car Detailing &amp; Ceramic Coating</title>
+<meta name="description" content="Lucid Automotive Detailing – premium car care: ceramic coating, paint protection film, paint correction, interior detailing and more.">
+<meta name="theme-color" content="#0d0b09">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --y:#FFC20E; --y2:#ffd54a; --bg:#0d0b09; --bg2:#14110d; --card:#1a1611;
+  --line:rgba(255,255,255,.09); --w:#fff; --muted:#b9b4aa;
+  --head:'Rajdhani',sans-serif; --body:'Inter',sans-serif;
+  --nav:76px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--w);font-family:var(--body);line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+section{padding:100px 0;scroll-margin-top:var(--nav);position:relative}
+.wrap{width:min(1180px,92%);margin:auto}
+h1,h2,h3{font-family:var(--head);line-height:1.1;text-transform:uppercase;letter-spacing:.5px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--y);font:600 .85rem var(--head);letter-spacing:3px;text-transform:uppercase}
+.eyebrow::before{content:"";width:34px;height:3px;background:var(--y);transform:skewX(-30deg)}
+.title{font-size:clamp(2rem,4.5vw,3.2rem);margin:10px 0 14px}
+.title span{color:var(--y)}
+.lead{color:var(--muted);max-width:620px}
+.center{text-align:center}.center .lead{margin:auto}.center .eyebrow{justify-content:center}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;font:700 1rem var(--head);letter-spacing:1.5px;text-transform:uppercase;border:2px solid var(--y);cursor:pointer;position:relative;overflow:hidden;transition:.3s;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);background:none;color:var(--w)}
+.btn.solid{background:var(--y);color:#111}
+.btn.solid:hover{background:var(--w);border-color:var(--w);transform:translateY(-3px)}
+.btn.ghost:hover{background:var(--y);color:#111;transform:translateY(-3px)}
+.btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* load animation + scroll reveal */
+.reveal{opacity:0;transform:translateY(45px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.reveal.left{transform:translateX(-60px)}.reveal.right{transform:translateX(60px)}.reveal.zoom{transform:scale(.88)}
+.reveal.in{opacity:1;transform:none}
+
+/* preloader */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:999;display:grid;place-items:center;transition:opacity .7s .2s,visibility .7s .2s}
+#loader.done{opacity:0;visibility:hidden}
+#loader svg{width:min(380px,72vw);animation:pulse 1.4s ease-in-out infinite}
+#loader .bar{position:absolute;bottom:34%;width:min(260px,50vw);height:3px;background:#2a2620;overflow:hidden}
+#loader .bar i{display:block;height:100%;width:40%;background:var(--y);animation:load 1.1s infinite ease-in-out}
+@keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(260%)}}
+@keyframes pulse{50%{opacity:.6;transform:scale(.97)}}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;height:var(--nav);z-index:90;transition:.4s;animation:drop .9s 1.2s both}
+@keyframes drop{from{transform:translateY(-100%)}to{transform:none}}
+header.scrolled{background:rgba(13,11,9,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav .logo svg{height:44px;width:auto}
+.menu{display:flex;gap:6px;list-style:none;align-items:center}
+.menu a{display:block;padding:8px 16px;font:600 1.05rem var(--head);letter-spacing:1.5px;text-transform:uppercase;position:relative;transition:.3s}
+.menu a::after{content:"";position:absolute;left:16px;right:16px;bottom:2px;height:3px;background:var(--y);transform:scaleX(0) skewX(-30deg);transform-origin:left;transition:.35s}
+.menu a:hover,.menu a.active{color:var(--y)}
+.menu a:hover::after,.menu a.active::after{transform:scaleX(1) skewX(-30deg)}
+.menu .cta a{background:var(--y);color:#111;margin-left:10px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);padding:9px 24px}
+.menu .cta a:hover{background:#fff;color:#111}.menu .cta a::after{display:none}
+.burger{display:none;width:44px;height:44px;background:none;border:0;cursor:pointer;position:relative}
+.burger span,.burger::before,.burger::after{content:"";position:absolute;left:9px;right:9px;height:3px;background:var(--y);transition:.3s}
+.burger::before{top:14px}.burger span{top:21px}.burger::after{top:28px}
+.burger.open::before{transform:translateY(7px) rotate(45deg)}.burger.open::after{transform:translateY(-7px) rotate(-45deg)}.burger.open span{opacity:0}
+
+/* hero slider */
+#home{padding:0;height:100vh;min-height:640px;overflow:hidden}
+.slides,.slide{position:absolute;inset:0}
+.slide{opacity:0;visibility:hidden;transition:opacity 1.2s,visibility 1.2s;display:flex;align-items:center}
+.slide.active{opacity:1;visibility:visible}
+.slide .bg{position:absolute;inset:0;transform:scale(1.15);transition:transform 9s linear}
+.slide.active .bg{transform:scale(1)}
+.s1 .bg{background:radial-gradient(60% 70% at 78% 45%,rgba(255,194,14,.28),transparent 70%),linear-gradient(120deg,#0d0b09 30%,#1c160a 100%)}
+.s2 .bg{background:radial-gradient(55% 65% at 22% 55%,rgba(255,194,14,.22),transparent 70%),linear-gradient(240deg,#0d0b09 30%,#191a1c 100%)}
+.s3 .bg{background:radial-gradient(60% 70% at 70% 60%,rgba(255,255,255,.12),transparent 70%),linear-gradient(160deg,#0d0b09 25%,#221a07 100%)}
+.slide .bg::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 60px,rgba(255,194,14,.045) 60px 62px)}
+.slash{position:absolute;right:8%;top:22%;width:46vw;max-width:620px;opacity:.9}
+.slash i{position:absolute;display:block;height:34px;width:60%;background:var(--y);transform:skewX(-45deg);right:0}
+.slash i:nth-child(1){top:0}.slash i:nth-child(2){top:70px;width:90%;background:#fff;opacity:.92}.slash i:nth-child(3){top:140px;width:45%;opacity:.55}
+.slide.active .slash i{animation:slashin 1.1s cubic-bezier(.2,.7,.2,1) both}
+.slide.active .slash i:nth-child(2){animation-delay:.15s}.slide.active .slash i:nth-child(3){animation-delay:.3s}
+@keyframes slashin{from{transform:translateX(120%) skewX(-45deg);opacity:0}}
+.slide .txt{position:relative;z-index:2;max-width:640px;padding-top:var(--nav)}
+.slide .txt>*{opacity:0;transform:translateY(34px)}
+.slide.active .txt>*{animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+.slide.active .txt>*:nth-child(2){animation-delay:.15s}.slide.active .txt>*:nth-child(3){animation-delay:.3s}.slide.active .txt>*:nth-child(4){animation-delay:.45s}
+@keyframes up{to{opacity:1;transform:none}}
+.slide h1{font-size:clamp(2.6rem,7vw,5.2rem);margin:14px 0 18px}
+.slide h1 em{font-style:normal;color:var(--y)}
+.slide p{color:#d7d2c7;font-size:1.1rem;max-width:520px;margin-bottom:30px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.arrow{position:absolute;top:50%;z-index:5;width:52px;height:52px;border:2px solid var(--line);background:rgba(13,11,9,.5);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.3s;transform:translateY(-50%)}
+.arrow:hover{background:var(--y);border-color:var(--y);color:#111}
+.arrow svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.5}
+.arrow.prev{left:2%}.arrow.next{right:2%}
+.dots{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:5}
+.dots button{width:44px;height:5px;border:0;background:rgba(255,255,255,.25);cursor:pointer;position:relative;overflow:hidden;transform:skewX(-30deg)}
+.dots button.active::after{content:"";position:absolute;inset:0;background:var(--y);animation:prog 6s linear}
+@keyframes prog{from{transform:translateX(-100%)}}
+.scroll-hint{position:absolute;bottom:34px;right:4%;z-index:5;font:600 .8rem var(--head);letter-spacing:3px;color:var(--muted);writing-mode:vertical-rl;display:flex;align-items:center;gap:12px}
+.scroll-hint::after{content:"";width:2px;height:50px;background:var(--y);animation:grow 1.8s infinite}
+@keyframes grow{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* about */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
+.about-visual{position:relative;aspect-ratio:1/1;max-width:520px;margin:auto;width:100%}
+.about-visual .frame{position:absolute;inset:0;border:2px solid var(--y);transform:translate(18px,18px)}
+.about-visual .box{position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,194,14,.25),transparent 60%),#0d0b09;border:1px solid var(--line);display:grid;place-items:center;padding:34px;overflow:hidden}
+.about-visual .box::before{content:"";position:absolute;inset:-50%;background:conic-gradient(from 0deg,transparent 0 80%,rgba(255,194,14,.25) 100%);animation:spin 7s linear infinite}
+.about-visual .box::after{content:"";position:absolute;inset:3px;background:#0d0b09}
+.about-visual svg{position:relative;z-index:2;width:100%}
+@keyframes spin{to{transform:rotate(360deg)}}
+.checks{list-style:none;margin:24px 0 32px;display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+.checks li{display:flex;gap:10px;align-items:flex-start;font-weight:500}
+.checks svg{flex:none;width:20px;height:20px;margin-top:3px;stroke:var(--y);fill:none;stroke-width:3}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+.stat{border-left:3px solid var(--y);padding:4px 0 4px 16px}
+.stat b{display:block;font:700 2.6rem var(--head);color:var(--y);line-height:1}
+.stat span{color:var(--muted);font-size:.9rem}
+
+/* social strip */
+#social{padding:70px 0;background:linear-gradient(100deg,var(--y),var(--y2));color:#111;overflow:hidden}
+#social::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 40px,rgba(0,0,0,.06) 40px 44px)}
+.social-in{position:relative;display:flex;align-items:center;justify-content:space-between;gap:34px;flex-wrap:wrap}
+.social-in h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+.social-in p{max-width:420px;font-weight:500;opacity:.8}
+.socials{display:flex;gap:14px;flex-wrap:wrap}
+.socials a{width:60px;height:60px;display:grid;place-items:center;background:#111;color:var(--y);transition:.35s;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+.socials a:hover{background:#fff;color:#111;transform:translateY(-8px) scale(1.08)}
+.socials svg{width:26px;height:26px;fill:currentColor}
+
+/* services */
+.grid{display:grid;gap:24px}
+.services{grid-template-columns:repeat(4,1fr);margin-top:56px}
+.card{background:var(--card);border:1px solid var(--line);padding:34px 26px;position:relative;overflow:hidden;transition:.4s}
+.card::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--y);transform:scaleX(0);transform-origin:left;transition:.5s}
+.card::after{content:"";position:absolute;width:180px;height:180px;right:-70px;bottom:-70px;background:radial-gradient(circle,rgba(255,194,14,.22),transparent 70%);opacity:0;transition:.5s}
+.card:hover{transform:translateY(-10px);border-color:rgba(255,194,14,.5);box-shadow:0 22px 50px -20px rgba(255,194,14,.28)}
+.card:hover::before{transform:scaleX(1)}.card:hover::after{opacity:1}
+.ico{width:62px;height:62px;display:grid;place-items:center;border:2px solid var(--y);margin-bottom:22px;transform:skewX(-10deg);transition:.4s}
+.ico svg{width:30px;height:30px;stroke:var(--y);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transform:skewX(10deg);transition:.4s}
+.card:hover .ico{background:var(--y)}.card:hover .ico svg{stroke:#111}
+.card h3{font-size:1.45rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.95rem}
+.num{position:absolute;right:18px;top:10px;font:700 3.2rem var(--head);color:rgba(255,255,255,.05)}
+
+/* videos */
+#work{background:var(--bg2)}
+.videos{grid-template-columns:repeat(3,1fr);margin-top:56px}
+.vid{display:block;position:relative;aspect-ratio:9/12;overflow:hidden;border:1px solid var(--line);background:#000}
+.vid .th{position:absolute;inset:0;transition:transform .8s}
+.vid:nth-child(1) .th{background:radial-gradient(70% 60% at 30% 30%,rgba(255,194,14,.4),transparent 70%),linear-gradient(160deg,#241c08,#0b0907)}
+.vid:nth-child(2) .th{background:radial-gradient(70% 60% at 70% 35%,rgba(255,255,255,.22),transparent 70%),linear-gradient(200deg,#1d1d1f,#0b0907)}
+.vid:nth-child(3) .th{background:radial-gradient(70% 60% at 50% 70%,rgba(255,194,14,.35),transparent 70%),linear-gradient(120deg,#2b210a,#0b0907)}
+.vid .th::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 30px,rgba(255,255,255,.035) 30px 32px)}
+.vid:hover .th{transform:scale(1.12)}
+.play{position:absolute;left:50%;top:44%;width:84px;height:84px;margin:-42px;border-radius:50%;background:var(--y);display:grid;place-items:center;transition:.4s;box-shadow:0 0 0 0 rgba(255,194,14,.6);animation:ring 2.2s infinite}
+.play svg{width:32px;height:32px;fill:#111;margin-left:4px}
+.vid:hover .play{transform:scale(1.15);background:#fff}
+@keyframes ring{70%{box-shadow:0 0 0 26px rgba(255,194,14,0)}100%{box-shadow:0 0 0 0 rgba(255,194,14,0)}}
+.vid .cap{position:absolute;left:0;right:0;bottom:0;padding:70px 22px 22px;background:linear-gradient(transparent,rgba(0,0,0,.92))}
+.vid .tag{display:inline-block;background:var(--y);color:#111;font:700 .75rem var(--head);letter-spacing:2px;padding:2px 10px;margin-bottom:8px;text-transform:uppercase}
+.vid h3{font-size:1.35rem}
+.vid small{color:var(--muted)}
+.more{margin-top:44px}
+
+/* feedback */
+.t-wrap{max-width:860px;margin:56px auto 0;position:relative}
+.t-track{overflow:hidden}
+.t-slides{display:flex;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.t{min-width:100%;padding:44px 48px;background:var(--card);border:1px solid var(--line);position:relative;text-align:center}
+.t::before{content:"\201C";position:absolute;top:-6px;left:26px;font:700 8rem/1 var(--head);color:rgba(255,194,14,.18)}
+.stars{color:var(--y);letter-spacing:5px;font-size:1.3rem;margin-bottom:14px}
+.t p{font-size:1.15rem;color:#ece7dc;margin-bottom:22px}
+.who{display:flex;align-items:center;justify-content:center;gap:14px;text-align:left}
+.av{width:50px;height:50px;border-radius:50%;background:var(--y);color:#111;display:grid;place-items:center;font:700 1.3rem var(--head)}
+.who b{display:block;font:700 1.15rem var(--head);letter-spacing:1px;text-transform:uppercase}
+.who span{color:var(--muted);font-size:.85rem}
+.t-ctrl{display:flex;justify-content:center;gap:12px;margin-top:26px;align-items:center}
+.t-ctrl button.dot{width:34px;height:5px;border:0;background:#3a352b;cursor:pointer;transform:skewX(-30deg);transition:.3s}
+.t-ctrl button.dot.active{background:var(--y);width:54px}
+.review-cta{margin-top:44px;display:flex;justify-content:center}
+.g-btn svg{fill:currentColor;stroke:none}
+
+/* contact */
+#contact{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;margin-top:56px}
+.info{display:grid;gap:18px;align-content:start}
+.info a,.info div.row{display:flex;gap:18px;align-items:center;padding:20px 22px;background:var(--card);border:1px solid var(--line);transition:.35s}
+.info a:hover{border-color:var(--y);transform:translateX(10px)}
+.info .ico{margin:0;flex:none;width:54px;height:54px}
+.info small{display:block;color:var(--muted);font:600 .8rem var(--head);letter-spacing:2px;text-transform:uppercase}
+.info b{font-weight:600;font-size:1.05rem;word-break:break-word}
+form{background:var(--card);border:1px solid var(--line);padding:34px;display:grid;gap:16px;border-top:4px solid var(--y)}
+form .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+input,select,textarea{width:100%;padding:14px 16px;background:#0d0b09;border:1px solid var(--line);color:#fff;font:inherit;transition:.3s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--y);box-shadow:0 0 0 3px rgba(255,194,14,.15)}
+select option{background:#14110d}
+textarea{min-height:120px;resize:vertical}
+.note{font-size:.82rem;color:var(--muted)}
+
+/* footer */
+footer{background:#080706;border-top:1px solid var(--line);padding:70px 0 0}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:44px}
+.f-grid svg.fl{width:240px;margin-bottom:16px}
+footer h4{font:700 1.2rem var(--head);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;color:var(--y)}
+footer p,footer li{color:var(--muted);font-size:.95rem}
+footer ul{list-style:none;display:grid;gap:9px}
+footer li a:hover{color:var(--y);padding-left:6px}footer li a{transition:.3s}
+.f-soc{display:flex;gap:10px;margin-top:18px}
+.f-soc a{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);color:#fff;transition:.3s}
+.f-soc a:hover{background:var(--y);color:#111;border-color:var(--y);transform:translateY(-4px)}
+.f-soc svg{width:19px;height:19px;fill:currentColor}
+.rate{margin-top:16px;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border:2px solid var(--y);color:var(--y);font:700 .95rem var(--head);letter-spacing:1.5px;text-transform:uppercase;transition:.3s}
+.rate:hover{background:var(--y);color:#111}
+.copy{margin-top:56px;border-top:1px solid var(--line);padding:22px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:.88rem}
+
+/* floating buttons */
+.float{position:fixed;right:20px;bottom:20px;z-index:80;display:grid;gap:12px}
+.float a,.float button{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;border:0;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:.3s}
+.float .wa{background:#25D366;color:#fff}.float .wa svg{width:28px;height:28px;fill:currentColor}
+.float .top{background:var(--y);color:#111;opacity:0;visibility:hidden;transform:translateY(10px)}
+.float .top.show{opacity:1;visibility:visible;transform:none}
+.float .top svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:3}
+.float a:hover,.float button:hover{transform:translateY(-4px) scale(1.07)}
+
+/* responsive */
+@media(max-width:1020px){
+  .services{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:50px}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .videos{grid-template-columns:1fr 1fr}
+}
+@media(max-width:860px){
+  .burger{display:block}
+  .menu{position:fixed;top:var(--nav);left:0;right:0;flex-direction:column;background:rgba(13,11,9,.97);backdrop-filter:blur(14px);padding:20px 0 30px;gap:4px;transform:translateY(-130%);transition:.45s;border-bottom:2px solid var(--y)}
+  .menu.open{transform:none}
+  .menu a{padding:12px 26px;font-size:1.25rem}
+  .menu .cta a{margin:10px 0 0}
+  .arrow{display:none}.scroll-hint{display:none}.slash{opacity:.35}
+}
+@media(max-width:620px){
+  section{padding:76px 0}
+  .services,.videos,.checks,.f-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr 1fr;gap:10px}.stat b{font-size:2rem}
+  .t{padding:40px 22px}
+  form .two{grid-template-columns:1fr}
+  .social-in{justify-content:center;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGO (vector, HD at any size) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="mark">
+      <g fill="#FFC20E" fill-rule="evenodd">
+        <path d="M0 0H24V58H110V80H0Z"/>
+        <path d="M130 0H154V56L158 58H222L226 56V0H250V70L240 80H140L130 70Z"/>
+        <path d="M280 0H380V22H294V58H380V80H280L270 70V10Z"/>
+        <path d="M400 0H424V80H400Z"/>
+        <path d="M444 0H540L560 20V70L550 80H444ZM468 22V58H536V26L534 22Z"/>
+        <path d="M508 -8L538 -34H558L528 -8Z"/>
+      </g>
+      <path d="M566 -8L596 -34H616L586 -8Z" fill="#fff"/>
+    </g>
+    <g id="tag"><text x="188" y="120" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="27" fill="#fff" textLength="372" lengthAdjust="spacingAndGlyphs">AUTOMOTIVE DETAILING</text></g>
+  </defs>
+</svg>
+
+<div id="loader" aria-hidden="true">
+  <svg viewBox="-10 -42 640 172"><use href="#mark"/><use href="#tag"/></svg>
+  <div class="bar"><i></i></div>
+</div>
+
+<!-- ============ HEADER / MENU ============ -->
+<header id="top">
+  <div class="wrap nav">
+    <a href="#home" class="logo" aria-label="Lucid Automotive Detailing – Home">
+      <svg viewBox="-10 -42 640 134"><use href="#mark"/></svg>
+    </a>
+    <button class="burger" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    <ul class="menu">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="cta"><a href="#contact">Book Now</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ HERO SLIDER ============ -->
+<section id="home" aria-label="Featured">
+  <div class="slides">
+    <!-- To use real photos: add style="background-image:url('your-photo.jpg')" to the .bg div and darken with a gradient. -->
+    <article class="slide s1 active">
+      <div class="bg"></div>
+      <div class="slash"><i></i><i></i><i></i></div>
+      <div class="wrap"><div class="txt">
+        <span class="eyebrow">Premium Car Care</span>
+        <h1>Where Every Car Gets A <em>Lucid</em> Shine</h1>
+        <p>Show-room finish detailing by passionate experts – from deep cleaning to mirror-like paint perfection.</p>
+        <div class="hero-btns"><a href="#contact" class="btn solid">Book Appointment</a><a href="#services" class="btn ghost">Our Services</a></div>
+      </div></div>
+    </article>
+    <article class="slide s2">
+      <div class="bg"></div>
+      <div class="slash"><i></i><i></i><i></i></div>
+      <div class="wrap"><div class="txt">
+        <span class="eyebrow">Ceramic Coating</span>
+        <h1>Armour For Your <em>Paint</em></h1>
+        <p>Long-lasting 9H ceramic protection that repels dirt, water and UV – with a deep, glass-like gloss.</p>
+        <div class="hero-btns"><a href="#services" class="btn solid">Explore Coatings</a><a href="#work" class="btn ghost">See Our Work</a></div>
+      </div></div>
+    </article>
+    <article class="slide s3">
+      <div class="bg"></div>
+      <div class="slash"><i></i><i></i><i></i></div>
+      <div class="wrap"><div class="txt">
+        <span class="eyebrow">Interior &amp; Exterior</span>
+        <h1>Fresh Inside. <em>Flawless</em> Outside.</h1>
+        <p>Deep interior sanitising, paint correction and complete detailing packages for every car and bike.</p>
+        <div class="hero-btns"><a href="#contact" class="btn solid">Get A Quote</a><a href="#reviews" class="btn ghost">Happy Customers</a></div>
+      </div></div>
+    </article>
+  </div>
+  <button class="arrow prev" aria-label="Previous slide"><svg viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8"/></svg></button>
+  <button class="arrow next" aria-label="Next slide"><svg viewBox="0 0 24 24"><path d="M9 4l8 8-8 8"/></svg></button>
+  <div class="dots" role="tablist"></div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-visual reveal left">
+      <div class="frame"></div>
+      <div class="box"><svg viewBox="-10 -42 640 172"><use href="#mark"/><use href="#tag"/></svg></div>
+    </div>
+    <div>
+      <span class="eyebrow reveal">About Us</span>
+      <h2 class="title reveal" style="--d:.1s">Detailing Done With <span>Passion &amp; Precision</span></h2>
+      <p class="lead reveal" style="--d:.2s">Lucid Automotive Detailing is built on one idea – your car deserves more than a wash. We combine premium products, modern tools and meticulous hand-finishing to restore, protect and elevate the look of every vehicle that rolls into our studio.</p>
+      <ul class="checks reveal" style="--d:.3s">
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Premium, paint-safe products</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Trained, experienced detailers</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Transparent pricing</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Quality-checked finish</li>
+      </ul>
+      <div class="stats reveal" style="--d:.4s">
+        <div class="stat"><b data-count="500" data-suffix="+">0</b><span>Cars Detailed</span></div>
+        <div class="stat"><b data-count="5" data-suffix="+">0</b><span>Years Experience</span></div>
+        <div class="stat"><b data-count="98" data-suffix="%">0</b><span>Happy Clients</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOCIAL STRIP ============ -->
+<section id="social">
+  <div class="wrap social-in">
+    <div class="reveal left">
+      <h2>Follow The <span style="background:#111;color:var(--y);padding:0 10px">Shine</span></h2>
+      <p>Daily transformations, behind-the-scenes and offers on our social pages.</p>
+    </div>
+    <div class="socials reveal right">
+      <a data-link="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM17.3 5.5a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/></svg></a>
+      <a data-link="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7H17V3.8S15.8 3.6 14.6 3.6c-2.6 0-4.3 1.6-4.3 4.4v2.5H7.5v3.3h2.8V22h3.2z"/></svg></a>
+      <a data-link="youtube" href="#" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2a3 3 0 00-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 002 8.2 31 31 0 001.6 12 31 31 0 002 15.8a3 3 0 002.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 002.1-2.1c.4-1.8.4-3.8.4-3.8s0-2-.4-3.8zM10 15V9l5.2 3L10 15z"/></svg></a>
+      <a data-link="whatsapp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.2.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow reveal">What We Offer</span>
+      <h2 class="title reveal" style="--d:.1s">Our <span>Services</span></h2>
+      <p class="lead reveal" style="--d:.2s">Complete care packages designed to protect your investment and keep it looking brand new.</p>
+    </div>
+    <div class="grid services">
+      <div class="card reveal zoom"><span class="num">01</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Ceramic Coating</h3><p>Nano-ceramic protection with deep gloss, hydrophobic effect and years of durability.</p></div>
+      <div class="card reveal zoom" style="--d:.1s"><span class="num">02</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></div><h3>Paint Protection Film</h3><p>Self-healing PPF that shields against chips, scratches and stains.</p></div>
+      <div class="card reveal zoom" style="--d:.2s"><span class="num">03</span><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div><h3>Paint Correction</h3><p>Multi-stage machine polishing to remove swirls, scratches and oxidation.</p></div>
+      <div class="card reveal zoom" style="--d:.3s"><span class="num">04</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 10-3-3"/><path d="M3 12h16a3 3 0 11-3 3"/><path d="M3 16h8"/></svg></div><h3>Interior Detailing</h3><p>Deep vacuum, steam, leather care and sanitisation for a fresh, healthy cabin.</p></div>
+      <div class="card reveal zoom"><span class="num">05</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2s7 7.5 7 12a7 7 0 01-14 0c0-4.5 7-12 7-12z"/></svg></div><h3>Foam Wash &amp; Wax</h3><p>Safe, touch-less foam wash with premium wax for instant shine.</p></div>
+      <div class="card reveal zoom" style="--d:.1s"><span class="num">06</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 16l1.5-5h11L19 16"/><path d="M3 16h18v3H3z"/><path d="M7 19v2M17 19v2"/></svg></div><h3>Headlight Restoration</h3><p>Remove yellowing and haze for clear lights and better night visibility.</p></div>
+      <div class="card reveal zoom" style="--d:.2s"><span class="num">07</span><div class="ico"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Engine Bay Detailing</h3><p>Careful degreasing and dressing for a clean, show-ready engine bay.</p></div>
+      <div class="card reveal zoom" style="--d:.3s"><span class="num">08</span><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 21h10M8 9l3 3 5-5"/></svg></div><h3>Glass Treatment</h3><p>Water-repellent coating and polishing for crystal-clear glass in any weather.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR WORK (SOCIAL VIDEO POSTS) ============ -->
+<section id="work">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow reveal">Our Work</span>
+      <h2 class="title reveal" style="--d:.1s">Watch The <span>Transformations</span></h2>
+      <p class="lead reveal" style="--d:.2s">Tap a video to see the full result on our social media page.</p>
+    </div>
+    <div class="grid videos" id="videos">
+      <!-- Replace each href with the link to your real post/reel (set in CONFIG below) -->
+      <a class="vid reveal zoom" href="#" target="_blank" rel="noopener" data-video="0">
+        <div class="th"></div><div class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></div>
+        <div class="cap"><span class="tag">Instagram Reel</span><h3>Ceramic Coating Finish</h3><small>Watch on Instagram</small></div>
+      </a>
+      <a class="vid reveal zoom" href="#" target="_blank" rel="noopener" data-video="1" style="--d:.12s">
+        <div class="th"></div><div class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></div>
+        <div class="cap"><span class="tag">YouTube</span><h3>Full Paint Correction</h3><small>Watch on YouTube</small></div>
+      </a>
+      <a class="vid reveal zoom" href="#" target="_blank" rel="noopener" data-video="2" style="--d:.24s">
+        <div class="th"></div><div class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></div>
+        <div class="cap"><span class="tag">Facebook</span><h3>Interior Deep Clean</h3><small>Watch on Facebook</small></div>
+      </a>
+    </div>
+    <div class="center more reveal"><a data-link="instagram" href="#" target="_blank" rel="noopener" class="btn ghost">View All Videos</a></div>
+  </div>
+</section>
+
+<!-- ============ CUSTOMER FEEDBACK ============ -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow reveal">Testimonials</span>
+      <h2 class="title reveal" style="--d:.1s">Customer <span>Feedback</span></h2>
+      <p class="lead reveal" style="--d:.2s">Real words from drivers who trust Lucid with their cars.</p>
+    </div>
+    <!-- SAMPLE reviews – replace the names and text with your real customer feedback -->
+    <div class="t-wrap reveal zoom">
+      <div class="t-track"><div class="t-slides">
+        <div class="t"><div class="stars">★★★★★</div><p>My car looks better than the day I bought it. The ceramic coating finish is unreal and the team was professional from start to end.</p><div class="who"><div class="av">R</div><div><b>Rahul S.</b><span>Ceramic Coating</span></div></div></div>
+        <div class="t"><div class="stars">★★★★★</div><p>Interior was spotless and smelled fresh. Great attention to detail and very fair pricing. Highly recommended!</p><div class="who"><div class="av">P</div><div><b>Priya M.</b><span>Interior Detailing</span></div></div></div>
+        <div class="t"><div class="stars">★★★★★</div><p>Deep scratches and swirl marks gone. The paint correction work is world class. I will be back for my next car.</p><div class="who"><div class="av">A</div><div><b>Aman K.</b><span>Paint Correction</span></div></div></div>
+      </div></div>
+      <div class="t-ctrl"></div>
+    </div>
+    <div class="review-cta reveal"><a data-link="googleReview" href="#" target="_blank" rel="noopener" class="btn solid g-btn"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5.1 4.9 1.3 7L12 17.8 5.8 21.3l1.3-7L2 9.4l7-.9z"/></svg>Write A Google Review</a></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow reveal">Get In Touch</span>
+      <h2 class="title reveal" style="--d:.1s">Book Your <span>Detailing</span> Slot</h2>
+      <p class="lead reveal" style="--d:.2s">Call us, message on WhatsApp or send your details – we'll get back quickly.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="info reveal left">
+        <a data-contact="phone" href="#"><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 006 6L16 13l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg></div><div><small>Call Us</small><b data-text="phone">+91 00000 00000</b></div></a>
+        <a data-contact="email" href="#"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><small>Email</small><b data-text="email">info@yourdomain.com</b></div></a>
+        <a data-link="whatsapp" href="#" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-4-7.5L21 3l-1.5 4A9 9 0 0121 12z"/></svg></div><div><small>WhatsApp</small><b>Chat with us</b></div></a>
+        <div class="row"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><small>Visit Studio</small><b data-text="address">Your studio address here</b></div></div>
+      </div>
+      <form id="bookForm" class="reveal right">
+        <div class="two"><input name="name" placeholder="Your Name" required><input name="phone" type="tel" placeholder="Phone Number" required></div>
+        <div class="two"><input name="car" placeholder="Car Make &amp; Model"><select name="service"><option>Ceramic Coating</option><option>Paint Protection Film</option><option>Paint Correction</option><option>Interior Detailing</option><option>Foam Wash &amp; Wax</option><option>Headlight Restoration</option><option>Other</option></select></div>
+        <textarea name="msg" placeholder="Tell us what your car needs..."></textarea>
+        <button class="btn solid" type="submit">Send On WhatsApp</button>
+        <span class="note">Clicking send opens WhatsApp with your details pre-filled.</span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <svg class="fl" viewBox="-10 -42 640 172"><use href="#mark"/><use href="#tag"/></svg>
+        <p>Premium car detailing, ceramic coating and paint protection – crafted with passion and precision.</p>
+        <div class="f-soc">
+          <a data-link="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM17.3 5.5a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/></svg></a>
+          <a data-link="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7H17V3.8S15.8 3.6 14.6 3.6c-2.6 0-4.3 1.6-4.3 4.4v2.5H7.5v3.3h2.8V22h3.2z"/></svg></a>
+          <a data-link="youtube" href="#" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2a3 3 0 00-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 002 8.2 31 31 0 001.6 12 31 31 0 002 15.8a3 3 0 002.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 002.1-2.1c.4-1.8.4-3.8.4-3.8s0-2-.4-3.8zM10 15V9l5.2 3L10 15z"/></svg></a>
+          <a data-link="whatsapp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.2.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#work">Our Work</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Services</h4><ul><li>Ceramic Coating</li><li>Paint Protection Film</li><li>Paint Correction</li><li>Interior Detailing</li><li>Foam Wash &amp; Wax</li></ul></div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a data-contact="phone" href="#"><span data-text="phone">+91 00000 00000</span></a></li>
+          <li><a data-contact="email" href="#"><span data-text="email">info@yourdomain.com</span></a></li>
+          <li data-text="address">Your studio address here</li>
+        </ul>
+        <a data-link="googleReview" href="#" target="_blank" rel="noopener" class="rate">★ Review Us On Google</a>
+      </div>
+    </div>
+    <div class="copy"><span>© <span id="yr"></span> Lucid Automotive Detailing. All rights reserved.</span><span>Crafted for a flawless finish.</span></div>
+  </div>
+</footer>
+
+<div class="float">
+  <a class="wa" data-link="whatsapp" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.2.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg></a>
+  <button class="top" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg></button>
+</div>
+
+<script>
+/* =========================================================
+   EDIT YOUR DETAILS HERE – everything on the page updates
+   ========================================================= */
+const CONFIG = {
+  phone: "+91 00000 00000",
+  whatsapp: "910000000000",              // country code + number, no + or spaces
+  email: "info@yourdomain.com",
+  address: "Your studio address here",
+  links: {
+    instagram: "https://www.instagram.com/your_page/",
+    facebook:  "https://www.facebook.com/your_page/",
+    youtube:   "https://www.youtube.com/@your_channel",
+    googleReview: "https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID"
+  },
+  videos: [                              // links to your work-video posts
+    "https://www.instagram.com/reel/your_reel_1/",
+    "https://www.youtube.com/watch?v=your_video_id",
+    "https://www.facebook.com/your_page/videos/your_video_id"
+  ]
+};
+
+/* ---------- fill in details ---------- */
+const digits = CONFIG.phone.replace(/[^\d+]/g,'');
+document.querySelectorAll('[data-text]').forEach(e=>e.textContent=CONFIG[e.dataset.text]);
+document.querySelectorAll('[data-contact="phone"]').forEach(a=>a.href='tel:'+digits);
+document.querySelectorAll('[data-contact="email"]').forEach(a=>a.href='mailto:'+CONFIG.email);
+document.querySelectorAll('[data-link]').forEach(a=>{
+  const k=a.dataset.link;
+  a.href = k==='whatsapp' ? 'https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent('Hi Lucid Automotive Detailing, I would like to know more about your services.') : CONFIG.links[k];
+});
+document.querySelectorAll('[data-video]').forEach(a=>a.href=CONFIG.videos[a.dataset.video]);
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- preloader + page-load animation ---------- */
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('done'),700));
+
+/* ---------- mobile menu ---------- */
+const burger=document.querySelector('.burger'), menu=document.querySelector('.menu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.classList.toggle('open',o);burger.setAttribute('aria-expanded',o)});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.classList.remove('open')}));
+
+/* ---------- header state, active link, back-to-top ---------- */
+const header=document.querySelector('header'), topBtn=document.querySelector('.float .top');
+const links=[...document.querySelectorAll('.menu a[href^="#"]:not(.cta a)')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+function onScroll(){
+  header.classList.toggle('scrolled',scrollY>40);
+  topBtn.classList.toggle('show',scrollY>600);
+  const y=scrollY+innerHeight*0.35; let cur=0;
+  secs.forEach((s,i)=>{if(s&&s.offsetTop<=y)cur=i});
+  links.forEach((a,i)=>a.classList.toggle('active',i===cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+topBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+
+/* ---------- hero slider ---------- */
+const slides=[...document.querySelectorAll('.slide')], dotsBox=document.querySelector('.dots');
+let idx=0, timer;
+slides.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Slide '+(i+1));b.onclick=()=>go(i);dotsBox.appendChild(b)});
+const dots=[...dotsBox.children];
+function go(n){
+  idx=(n+slides.length)%slides.length;
+  slides.forEach((s,i)=>s.classList.toggle('active',i===idx));
+  dots.forEach((d,i)=>{d.classList.remove('active');if(i===idx){void d.offsetWidth;d.classList.add('active')}});
+  clearInterval(timer); timer=setInterval(()=>go(idx+1),6000);
+}
+document.querySelector('.arrow.next').onclick=()=>go(idx+1);
+document.querySelector('.arrow.prev').onclick=()=>go(idx-1);
+let sx=0; const hero=document.getElementById('home');
+hero.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+hero.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)go(idx+(d<0?1:-1))});
+go(0);
+
+/* ---------- scroll reveal + counters ---------- */
+const io=new IntersectionObserver((es)=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add('in'); io.unobserve(e.target);
+  e.target.querySelectorAll?.('[data-count]').forEach(count);
+}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function count(el){
+  const t=+el.dataset.count, s=el.dataset.suffix||''; let st=null;
+  const step=ts=>{st??=ts;const p=Math.min((ts-st)/1600,1);el.textContent=Math.floor((1-Math.pow(1-p,3))*t)+(p===1?s:'');if(p<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
+}
+
+/* ---------- testimonials slider ---------- */
+const tSlides=document.querySelector('.t-slides'), tCount=tSlides.children.length, tCtrl=document.querySelector('.t-ctrl');
+let ti=0, tt;
+for(let i=0;i<tCount;i++){const b=document.createElement('button');b.className='dot';b.setAttribute('aria-label','Review '+(i+1));b.onclick=()=>tGo(i);tCtrl.appendChild(b)}
+function tGo(n){
+  ti=(n+tCount)%tCount; tSlides.style.transform=`translateX(-${ti*100}%)`;
+  [...tCtrl.children].forEach((d,i)=>d.classList.toggle('active',i===ti));
+  clearInterval(tt); tt=setInterval(()=>tGo(ti+1),5500);
+}
+tGo(0);
+
+/* ---------- booking form -> WhatsApp ---------- */
+document.getElementById('bookForm').addEventListener('submit',e=>{
+  e.preventDefault(); const f=new FormData(e.target);
+  const m=`Hello Lucid Automotive Detailing,%0AName: ${encodeURIComponent(f.get('name'))}%0APhone: ${encodeURIComponent(f.get('phone'))}%0ACar: ${encodeURIComponent(f.get('car')||'-')}%0AService: ${encodeURIComponent(f.get('service'))}%0AMessage: ${encodeURIComponent(f.get('msg')||'-')}`;
+  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${m}`,'_blank','noopener');
+});
+</script>
+</body>
+</html>
