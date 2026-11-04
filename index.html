@@ -58,7 +58,7 @@ header{position:fixed;top:0;left:0;right:0;height:var(--nav);z-index:90;transiti
 @keyframes drop{from{transform:translateY(-100%)}to{transform:none}}
 header.scrolled{background:rgba(13,11,9,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav{height:100%;display:flex;align-items:center;justify-content:space-between}
-.nav .logo svg{height:44px;width:auto}
+.nav .logo svg{height:60px;width:auto}
 .menu{display:flex;gap:6px;list-style:none;align-items:center}
 .menu a{display:block;padding:8px 16px;font:600 1.05rem var(--head);letter-spacing:1.5px;text-transform:uppercase;position:relative;transition:.3s}
 .menu a::after{content:"";position:absolute;left:16px;right:16px;bottom:2px;height:3px;background:var(--y);transform:scaleX(0) skewX(-30deg);transform-origin:left;transition:.35s}
@@ -288,7 +288,7 @@ footer li a:hover{color:var(--y);padding-left:6px}footer li a{transition:.3s}
 <header id="top">
   <div class="wrap nav">
     <a href="#home" class="logo" aria-label="Lucid Automotive Detailing – Home">
-      <svg viewBox="-10 -42 640 134"><use href="#mark"/></svg>
+      <svg class="fl" viewBox="-10 -42 640 172"><use href="#mark"></use><use href="#tag"></use></svg>
     </a>
     <button class="burger" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     <ul class="menu">
